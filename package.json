@@ -4,7 +4,7 @@
   "description": "JavaScript code to split names into their respective components (first, last, etc)",
   "main": "parse-names.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/joshfraser/JavaScript-Name-Parser/issues"
   },
-  "homepage": "https://github.com/joshfraser/JavaScript-Name-Parser#readme"
+  "homepage": "https://github.com/joshfraser/JavaScript-Name-Parser#readme",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "jest": "^29.3.1"
+  }
 }

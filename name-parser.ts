@@ -25,18 +25,60 @@ export const NameParser = (function () {
 
     // split into words
     // completely ignore any words in parentheses
-    const nameParts = fullastName.split(" ").filter((namePart) => namePart.indexOf("(") === -1);
+    let nameParts = fullastName
+      .replace(/\s+/g, " ")
+      .split(" ")
+      .filter(
+        (namePart) =>
+          !(
+            namePart.includes("(") ||
+            namePart.includes(")") ||
+            namePart.includes("The")
+          )
+      );
 
     const numWords = nameParts.length;
+
+    let { removedPart, salutation, updatedNameParts } =
+      this.getSalutationAndRemoveCommaName(nameParts);
+
+    let suffix: string | undefined = "";
+    // check for suffixes only if name consists more than 2 parts
+    if (numWords > 2) {
+      for (let i = numWords - 1; i > 1; i--) {
+        const namePart = nameParts[i];
+        if (!namePart) {
+          break;
+        }
+        const isSuffix = this.is_suffix(namePart);
+        if (!isSuffix) {
+          break;
+        }
+        // add removed part before suffix
+        if (removedPart) {
+          updatedNameParts.splice(i - 1, 0, removedPart);
+          removedPart = undefined;
+        }
+        // update suffix
+        suffix = (`${isSuffix} ` + suffix).trim();
+      }
+    }
+
+    // if we don't have suffix add it at the end
+    if (removedPart) {
+      updatedNameParts.push(removedPart);
+    }
+
+    nameParts = updatedNameParts;
+
     if (isLength(nameParts, 0)) {
       throw new Error("Something went wrong");
     }
-    // is the first word a title? (Mr. Mrs, etc)
-    const salutation = this.is_salutation(nameParts[0]);
-    const suffix = this.is_suffix(nameParts[numWords - 1]);
+
     // set the range for the middle part of the name (trim prefixes & suffixes)
-    const start = salutation ? 1 : 0;
-    const end = suffix ? numWords - 1 : numWords;
+    const start = salutation ? salutation.split(" ").length : 0;
+    // const end = suffix ? numWords - 1 : numWords;
+    const end = suffix ? numWords - suffix.split(" ").length : numWords;
 
     word = nameParts[start];
     // if we start off with an initial, we'll call it the first name
@@ -68,7 +110,14 @@ export const NameParser = (function () {
       if (this.is_initial(word)) {
         initials += " " + word.toUpperCase();
       } else {
-        firstName += " " + this.fix_case(word);
+        if (
+          firstName &&
+          numWords - (initials ? initials.split(" ").length : 0) === 2
+        ) {
+          lastName += " " + this.fix_case(word);
+        } else {
+          firstName += " " + this.fix_case(word);
+        }
       }
     }
 
@@ -82,17 +131,45 @@ export const NameParser = (function () {
 
     // return the various parts in an array
     return {
-      salutation: salutation || "",
-      firstName: firstName.trim(),
-      initials: initials.trim(),
-      lastName: lastName.trim(),
-      suffix: suffix || "",
+      salutation: salutation.replace(",", ""),
+      firstName: firstName.trim().replace(",", ""),
+      initials: initials.trim().replace(",", ""),
+      lastName: this.removeIgnoredChars(lastName.trim()),
+      suffix,
     };
+  };
+
+  NameParser.getSalutationAndRemoveCommaName = function (nameParts: string[]) {
+    let removedPart;
+    let salutation = "";
+    const updatedNameParts = [...nameParts];
+    // is the first words a title? (Mr. Mrs, etc)
+    for (const i in nameParts) {
+      const namePart = nameParts[i];
+      if (!namePart) {
+        break;
+      }
+      salutation = salutation.trim();
+      const isSalutation = this.is_salutation(namePart);
+      if (!isSalutation) {
+        /* if non-salutation part has comma remove and add at the end, so later
+        we grab firstname/lastname correctly */
+        // For example: Fraser, Joshua -> Joshua Fraser,
+        if (namePart.indexOf(",") !== -1) {
+          updatedNameParts.splice(Number(i), 1);
+          // store removed part in a variable later we will add it right before suffix
+          removedPart = namePart;
+        }
+        break;
+      }
+      salutation += ` ${isSalutation}`;
+    }
+    return { removedPart, salutation, updatedNameParts };
   };
 
   NameParser.removeIgnoredChars = function (word: string) {
     //ignore periods
-    return word.replace(".", "");
+    return word.replace(/[.,]/g, "");
   };
 
   // detect and format standard salutations
@@ -112,8 +189,12 @@ export const NameParser = (function () {
       return "Rev.";
     } else if (word === "fr") {
       return "Fr.";
+    } else if (word === "prof") {
+      return "Prof.";
+    } else if (word === "sir") {
+      return "Sir.";
     } else {
-      return false;
+      return "";
     }
   };
 
@@ -184,9 +265,9 @@ export const NameParser = (function () {
 
     if (suffixIndex >= 0) {
       return suffixArray[suffixIndex];
-    } else {
-      return false;
     }
+
+    return "";
   };
 
   // detect compound last names like "Von Fange"
@@ -254,7 +335,10 @@ export const NameParser = (function () {
         if (this.is_camel_case(thisWord)) {
           return thisWord;
         } else {
-          return thisWord.substr(0, 1).toUpperCase() + thisWord.substr(1).toLowerCase();
+          return (
+            thisWord.substr(0, 1).toUpperCase() +
+            thisWord.substr(1).toLowerCase()
+          );
         }
       })
       .join(seperator);
