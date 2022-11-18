@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "build": "rm -rf dist && tsc -d",
-    "install": "yarn build",
+    "postinstall": "yarn build",
     "verify": "eslint ."
   },
   "repository": {
