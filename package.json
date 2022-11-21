@@ -2,11 +2,8 @@
   "name": "name-parser",
   "version": "1.0.0",
   "description": "JavaScript code to split names into their respective components (first, last, etc)",
-  "main": "./dist/name-parser.js",
-  "exports": {
-    "./*": "./dist/*.js"
-  },
-  "types": "dist/",
+  "main": "dist/name-parser.js",
+  "types": "dist/name-parser.d.ts",
   "scripts": {
     "test": "jest",
     "build": "rm -rf dist && tsc -d",
