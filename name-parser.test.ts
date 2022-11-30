@@ -4,19 +4,17 @@ test.each([
   {
     name: "John Doe",
     result: {
-      salutation: "",
       firstName: "John",
-      initials: "",
       lastName: "Doe",
-      suffix: "",
+      initials: "J.",
     },
   },
   {
     name: "Mr Anthony R Von Fange III",
     result: {
       salutation: "Mr.",
-      firstName: "Anthony",
-      initials: "R",
+      firstName: "Anthony R",
+      initials: "A. R.",
       lastName: "Von Fange",
       suffix: "III",
     },
@@ -24,39 +22,31 @@ test.each([
   {
     name: "Sara Ann Fraser",
     result: {
-      salutation: "",
       firstName: "Sara Ann",
-      initials: "",
+      initials: "S. A.",
       lastName: "Fraser",
-      suffix: "",
     },
   },
   {
     name: "Adam",
     result: {
-      salutation: "",
       firstName: "Adam",
-      initials: "",
-      lastName: "",
-      suffix: "",
+      initials: "A.",
     },
   },
   {
     name: "Jonathan Smith",
     result: {
-      salutation: "",
       firstName: "Jonathan",
-      initials: "",
+      initials: "J.",
       lastName: "Smith",
-      suffix: "",
     },
   },
   {
     name: "Anthony Von Fange III",
     result: {
-      salutation: "",
       firstName: "Anthony",
-      initials: "",
+      initials: "A.",
       lastName: "Von Fange",
       suffix: "III",
     },
@@ -66,17 +56,15 @@ test.each([
     result: {
       salutation: "Mr.",
       firstName: "John",
-      initials: "",
+      initials: "J.",
       lastName: "Doe",
-      suffix: "",
     },
   },
   {
     name: "Smarty Pants Phd",
     result: {
-      salutation: "",
       firstName: "Smarty",
-      initials: "",
+      initials: "S.",
       lastName: "Pants",
       suffix: "PhD",
     },
@@ -84,89 +72,64 @@ test.each([
   {
     name: "Mark P Williams",
     result: {
-      salutation: "",
-      firstName: "Mark",
-      initials: "P",
+      firstName: "Mark P",
+      initials: "M. P.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
     name: "Jack O'Neill",
     result: {
-      salutation: "",
       firstName: "Jack",
-      initials: "",
+      initials: "J.",
       lastName: "O'Neill",
-      suffix: "",
     },
   },
   {
     name: "Jack o Neill",
     result: {
-      salutation: "",
       firstName: "Jack",
-      initials: "",
+      initials: "J.",
       lastName: "O Neill",
-      suffix: "",
     },
   },
   {
     name: "Jack O Neill",
     result: {
-      salutation: "",
-      firstName: "Jack",
-      initials: "O",
+      firstName: "Jack O",
+      initials: "J. O.",
       lastName: "Neill",
-      suffix: "",
     },
   },
   {
     name: "James Norrington",
     result: {
-      salutation: "",
       firstName: "James",
-      initials: "",
+      initials: "J.",
       lastName: "Norrington",
-      suffix: "",
     },
   },
   {
     name: "Hans Christian Anderssen",
     result: {
-      salutation: "",
       firstName: "Hans Christian",
-      initials: "",
+      initials: "H. C.",
       lastName: "Anderssen",
-      suffix: "",
-    },
-  },
-  {
-    name: "Mr Anthony R Von Fange III",
-    result: {
-      salutation: "Mr.",
-      firstName: "Anthony",
-      initials: "R",
-      lastName: "Von Fange",
-      suffix: "III",
     },
   },
   {
     name: "J. B. Hunt",
     result: {
-      salutation: "",
-      firstName: "J.",
-      initials: "B.",
+      firstName: "J. B.",
+      initials: "J. B.",
       lastName: "Hunt",
-      suffix: "",
     },
   },
   {
     name: "Edward Senior III",
     result: {
-      salutation: "",
       firstName: "Edward",
-      initials: "",
+      initials: "E.",
       lastName: "Senior",
       suffix: "III",
     },
@@ -174,9 +137,8 @@ test.each([
   {
     name: "Edward Dale Senior II",
     result: {
-      salutation: "",
       firstName: "Edward",
-      initials: "",
+      initials: "E.",
       lastName: "Dale",
       suffix: "Senior II",
     },
@@ -184,9 +146,8 @@ test.each([
   {
     name: "Dale Edward Jones Senior",
     result: {
-      salutation: "",
       firstName: "Dale Edward",
-      initials: "",
+      initials: "D. E.",
       lastName: "Jones",
       suffix: "Senior",
     },
@@ -194,9 +155,8 @@ test.each([
   {
     name: "Jason Rodriguez Sr.",
     result: {
-      salutation: "",
       firstName: "Jason",
-      initials: "",
+      initials: "J.",
       lastName: "Rodriguez",
       suffix: "Sr",
     },
@@ -204,71 +164,41 @@ test.each([
   {
     name: "Jason Senior",
     result: {
-      salutation: "",
       firstName: "Jason",
-      initials: "",
+      initials: "J.",
       lastName: "Senior",
-      suffix: "",
     },
   },
   {
     name: "Bill Junior",
     result: {
-      salutation: "",
       firstName: "Bill",
-      initials: "",
+      initials: "B.",
       lastName: "Junior",
-      suffix: "",
-    },
-  },
-  {
-    name: "Sara Ann Fraser",
-    result: {
-      salutation: "",
-      firstName: "Sara Ann",
-      initials: "",
-      lastName: "Fraser",
-      suffix: "",
-    },
-  },
-  {
-    name: "Adam",
-    result: {
-      salutation: "",
-      firstName: "Adam",
-      initials: "",
-      lastName: "",
-      suffix: "",
     },
   },
   {
     name: "OLD MACDONALD",
     result: {
-      salutation: "",
       firstName: "Old",
-      initials: "",
+      initials: "O.",
       lastName: "Macdonald",
-      suffix: "",
     },
   },
   {
     name: "James van Allen",
     result: {
-      salutation: "",
       firstName: "James",
-      initials: "",
+      initials: "J.",
       lastName: "Van Allen",
-      suffix: "",
     },
   },
   {
     name: "Jimmy (Bubba) Smith",
     result: {
-      salutation: "",
       firstName: "Jimmy",
-      initials: "",
+      initials: "J.",
       lastName: "Smith",
-      suffix: "",
     },
   },
   {
@@ -276,9 +206,8 @@ test.each([
     result: {
       salutation: "Ms.",
       firstName: "Jennifer Shrader",
-      initials: "",
+      initials: "J. S.",
       lastName: "Lawrence",
-      suffix: "",
     },
   },
   {
@@ -286,29 +215,17 @@ test.each([
     result: {
       salutation: "Dr.",
       firstName: "Jonathan",
-      initials: "",
+      initials: "J.",
       lastName: "Smith",
-      suffix: "",
     },
   },
   {
     name: "Ms. Jamie P. Harrowitz",
     result: {
       salutation: "Ms.",
-      firstName: "Jamie",
-      initials: "P.",
+      firstName: "Jamie P.",
+      initials: "J. P.",
       lastName: "Harrowitz",
-      suffix: "",
-    },
-  },
-  {
-    name: "Mr John Doe",
-    result: {
-      salutation: "Mr.",
-      firstName: "John",
-      initials: "",
-      lastName: "Doe",
-      suffix: "",
     },
   },
   {
@@ -316,19 +233,17 @@ test.each([
     result: {
       salutation: "Rev. Dr.",
       firstName: "John",
-      initials: "",
+      initials: "J.",
       lastName: "Doe",
-      suffix: "",
     },
   },
   {
     name: "Prof. Tyson J. Hirthe",
     result: {
       salutation: "Prof.",
-      firstName: "Tyson",
-      initials: "J.",
+      firstName: "Tyson J.",
+      initials: "T. J.",
       lastName: "Hirthe",
-      suffix: "",
     },
   },
   {
@@ -336,89 +251,56 @@ test.each([
     result: {
       salutation: "Prof.",
       firstName: "Eveline",
-      initials: "",
+      initials: "E.",
       lastName: "Aufderhar",
-      suffix: "",
-    },
-  },
-  {
-    name: "Anthony Von Fange III",
-    result: {
-      salutation: "",
-      firstName: "Anthony",
-      initials: "",
-      lastName: "Von Fange",
-      suffix: "III",
-    },
-  },
-  {
-    name: "Smarty Pants Phd",
-    result: {
-      salutation: "",
-      firstName: "Smarty",
-      initials: "",
-      lastName: "Pants",
-      suffix: "PhD",
     },
   },
   {
     name: "Mark Peter Williams",
     result: {
-      salutation: "",
       firstName: "Mark Peter",
-      initials: "",
+      initials: "M. P.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
     name: "Mark P Williams",
     result: {
-      salutation: "",
-      firstName: "Mark",
-      initials: "P",
+      firstName: "Mark P",
+      initials: "M. P.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
     name: "Mark P. Williams",
     result: {
-      salutation: "",
-      firstName: "Mark",
-      initials: "P.",
+      firstName: "Mark P.",
+      initials: "M. P.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
     name: "M Peter Williams",
     result: {
-      salutation: "",
-      firstName: "Peter",
-      initials: "M",
+      firstName: "M Peter",
+      initials: "M. P.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
     name: "M. Peter Williams",
     result: {
-      salutation: "",
-      firstName: "Peter",
-      initials: "M.",
+      firstName: "M. Peter",
+      initials: "M. P.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
     name: "M. P. Williams",
     result: {
-      salutation: "",
-      firstName: "M.",
-      initials: "P.",
+      firstName: "M. P.",
+      initials: "M. P.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
@@ -426,9 +308,8 @@ test.each([
     result: {
       salutation: "Rev.",
       firstName: "Mark",
-      initials: "",
+      initials: "M.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
@@ -436,19 +317,16 @@ test.each([
     result: {
       salutation: "Mr.",
       firstName: "Mark",
-      initials: "",
+      initials: "M.",
       lastName: "Williams",
-      suffix: "",
     },
   },
   {
     name: "Fraser, Joshua",
     result: {
-      salutation: "",
       firstName: "Joshua",
-      initials: "",
+      initials: "J.",
       lastName: "Fraser",
-      suffix: "",
     },
   },
   {
@@ -456,9 +334,8 @@ test.each([
     result: {
       salutation: "Mrs.",
       firstName: "Amanda",
-      initials: "",
+      initials: "A.",
       lastName: "Brown",
-      suffix: "",
     },
   },
   {
@@ -466,29 +343,24 @@ test.each([
     result: {
       salutation: "Mr.",
       firstName: "Paul Joseph Maria",
-      initials: "",
+      initials: "P. J. M.",
       lastName: "Winters",
-      suffix: "",
     },
   },
   {
     name: "Van Truong",
     result: {
-      salutation: "",
       firstName: "Van",
-      initials: "",
+      initials: "V.",
       lastName: "Truong",
-      suffix: "",
     },
   },
   {
     name: "John Van",
     result: {
-      salutation: "",
       firstName: "John",
-      initials: "",
+      initials: "J.",
       lastName: "Van",
-      suffix: "",
     },
   },
   {
@@ -496,17 +368,15 @@ test.each([
     result: {
       salutation: "Mr.",
       firstName: "Van",
-      initials: "",
+      initials: "V.",
       lastName: "Truong",
-      suffix: "",
     },
   },
   {
     name: "Anthony Von Fange III, PHD",
     result: {
-      salutation: "",
       firstName: "Anthony",
-      initials: "",
+      initials: "A.",
       lastName: "Von Fange",
       suffix: "III PhD",
     },
@@ -514,19 +384,16 @@ test.each([
   {
     name: "Jimmy (Bubba Junior) Smith",
     result: {
-      salutation: "",
       firstName: "Jimmy",
-      initials: "",
+      initials: "J.",
       lastName: "Smith",
-      suffix: "",
     },
   },
   {
     name: "Jonathan Smith, MD",
     result: {
-      salutation: "",
       firstName: "Jonathan",
-      initials: "",
+      initials: "J.",
       lastName: "Smith",
       suffix: "MD",
     },
@@ -534,29 +401,24 @@ test.each([
   {
     name: "Kirk, James T.",
     result: {
-      salutation: "",
-      firstName: "James",
-      initials: "T.",
+      firstName: "James T.",
+      initials: "J. T.",
       lastName: "Kirk",
-      suffix: "",
     },
   },
   {
     name: "James B",
     result: {
-      salutation: "",
       firstName: "James",
-      initials: "",
+      initials: "J.",
       lastName: "B",
-      suffix: "",
     },
   },
   {
     name: "Williams, Hank, Jr.",
     result: {
-      salutation: "",
       firstName: "Hank",
-      initials: "",
+      initials: "H.",
       lastName: "Williams",
       suffix: "Jr",
     },
@@ -566,7 +428,7 @@ test.each([
     result: {
       salutation: "Sir.",
       firstName: "James",
-      initials: "",
+      initials: "J.",
       lastName: "Reynolds",
       suffix: "Junior",
     },
@@ -576,7 +438,7 @@ test.each([
     result: {
       salutation: "Sir.",
       firstName: "John Paul",
-      initials: "",
+      initials: "J. P.",
       lastName: "Getty",
       suffix: "Sr",
     },
@@ -584,69 +446,56 @@ test.each([
   {
     name: "etna übel",
     result: {
-      salutation: "",
       firstName: "Etna",
-      initials: "",
+      initials: "E.",
       lastName: "Übel",
-      suffix: "",
     },
   },
   {
     name: "Markus Müller",
     result: {
-      salutation: "",
       firstName: "Markus",
-      initials: "",
+      initials: "M.",
       lastName: "Müller",
-      suffix: "",
     },
   },
   {
     name: "Charles Dixon (20th century)",
     result: {
-      salutation: "",
       firstName: "Charles",
-      initials: "",
+      initials: "C.",
       lastName: "Dixon",
-      suffix: "",
     },
   },
   {
     name: "Smith, John Eric",
     result: {
-      salutation: "",
       firstName: "John Eric",
-      initials: "",
+      initials: "J. E.",
       lastName: "Smith",
-      suffix: "",
     },
   },
   {
     name: "PAUL M LEWIS MR",
     result: {
-      salutation: "",
-      firstName: "Paul",
-      initials: "M",
-      lastName: "Lewis Mr",
-      suffix: "",
+      firstName: "Paul M Lewis",
+      initials: "P. M. L.",
+      lastName: "Mr",
     },
   },
   {
     name: "SUJAN MASTER",
     result: {
-      salutation: "",
       firstName: "Sujan",
-      initials: "",
+      initials: "S.",
       lastName: "Master",
-      suffix: "",
     },
   },
   {
     name: "Tiptree, James, Jr",
     result: {
-      salutation: "",
       firstName: "James",
-      initials: "",
+      initials: "J.",
       lastName: "Tiptree",
       suffix: "Jr",
     },
@@ -654,9 +503,8 @@ test.each([
   {
     name: "Miller, Walter M., Jr.",
     result: {
-      salutation: "",
-      firstName: "Walter",
-      initials: "M.",
+      firstName: "Walter M.",
+      initials: "W. M.",
       lastName: "Miller",
       suffix: "Jr",
     },
@@ -664,9 +512,8 @@ test.each([
   {
     name: "Tiptree, James Jr.",
     result: {
-      salutation: "",
       firstName: "James",
-      initials: "",
+      initials: "J.",
       lastName: "Tiptree",
       suffix: "Jr",
     },
@@ -674,9 +521,8 @@ test.each([
   {
     name: "Miller, Walter M. Jr.",
     result: {
-      salutation: "",
-      firstName: "Walter",
-      initials: "M.",
+      firstName: "Walter M.",
+      initials: "W. M.",
       lastName: "Miller",
       suffix: "Jr",
     },
@@ -684,53 +530,43 @@ test.each([
   {
     name: "Thái Quốc Nguyễn",
     result: {
-      salutation: "",
       firstName: "Thái Quốc",
-      initials: "",
+      initials: "T. Q.",
       lastName: "Nguyễn",
-      suffix: "",
     },
   },
   {
     name: "Yumeng Du",
     result: {
-      salutation: "",
       firstName: "Yumeng",
-      initials: "",
+      initials: "Y.",
       lastName: "Du",
-      suffix: "",
     },
   },
   {
     name: "Yumeng Du",
     result: {
-      salutation: "",
       firstName: "Yumeng",
-      initials: "",
+      initials: "Y.",
       lastName: "Du",
-      suffix: "",
     },
   },
   {
     name: "Charles Philip Arthur George Mountbatten-Windsor",
     result: {
-      salutation: "",
       firstName: "Charles Philip Arthur George",
-      initials: "",
+      initials: "C. P. A. G.",
       lastName: "Mountbatten-Windsor",
-      suffix: "",
     },
   },
   {
     name: "Ella Marija Lani Yelich-O'Connor",
     result: {
-      salutation: "",
       firstName: "Ella Marija Lani",
-      initials: "",
+      initials: "E. M. L.",
       lastName: "Yelich-O'Connor",
-      suffix: "",
     },
   },
 ])("Check Name: %s", ({ name, result }) => {
-  expect(NameParser.parse(name)).toMatchObject(result);
+  expect(NameParser.parse(name)).toEqual(result);
 });

@@ -83,16 +83,11 @@ export const NameParser = (function () {
     word = nameParts[start];
     // if we start off with an initial, we'll call it the first name
     if (this.is_initial(word)) {
-      // if so, do a look-ahead to see if they go by their middle name
-      // for ex: "R. Jason Smith" => "Jason Smith" & "R." is stored as an initial
-      // but "R. J. Smith" => "R. Smith" and "J." is stored as an initial
-      if (this.is_initial(nameParts[start + 1])) {
-        firstName += " " + word.toUpperCase();
-      } else {
-        initials += " " + word.toUpperCase();
-      }
+      firstName += " " + word.toUpperCase();
+      initials += word.replace(".", "").toUpperCase() + ".";
     } else {
       firstName += " " + this.fix_case(word);
+      initials += word.toUpperCase().substring(0, 1) + ".";
     }
 
     // concat the first name
@@ -108,15 +103,14 @@ export const NameParser = (function () {
       }
 
       if (this.is_initial(word)) {
-        initials += " " + word.toUpperCase();
+        initials += " " + word.replace(".", "").toUpperCase() + ".";
+        firstName += " " + word.toUpperCase();
       } else {
-        if (
-          firstName &&
-          numWords - (initials ? initials.split(" ").length : 0) === 2
-        ) {
+        if (firstName && i === end - 1) {
           lastName += " " + this.fix_case(word);
         } else {
           firstName += " " + this.fix_case(word);
+          initials += " " + this.fix_case(word).substring(0, 1) + ".";
         }
       }
     }
@@ -131,11 +125,11 @@ export const NameParser = (function () {
 
     // return the various parts in an array
     return {
-      salutation: salutation.replace(",", ""),
-      firstName: firstName.trim().replace(",", ""),
-      initials: initials.trim().replace(",", ""),
-      lastName: this.removeIgnoredChars(lastName.trim()),
-      suffix,
+      salutation: salutation.replace(",", "") || undefined,
+      firstName: firstName.trim().replace(",", "") || undefined,
+      initials: initials.trim().replace(",", "") || undefined,
+      lastName: this.removeIgnoredChars(lastName.trim()) || undefined,
+      suffix: suffix || undefined,
     };
   };
 
