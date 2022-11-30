@@ -14,7 +14,7 @@ export const NameParser = (function () {
   // - surname / last name
   // - suffix (II, Phd, Jr, etc)
   NameParser.parse = function (fullastName: string) {
-    fullastName = fullastName.trim();
+    fullastName = this.strip_enclosing_specialchars(fullastName.trim());
 
     let lastName = "";
     let firstName = "";
@@ -336,6 +336,11 @@ export const NameParser = (function () {
         }
       })
       .join(seperator);
+  };
+
+  NameParser.strip_enclosing_specialchars = function (word: string) {
+    // strip non alphanumeric characters from beginning and end of word
+    return word.replace(/^[^\p{L}^(]+/iu, "").replace(/[^\p{L}^.^)]+$/iu, "");
   };
 
   return NameParser;

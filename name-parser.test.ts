@@ -567,6 +567,23 @@ test.each([
       lastName: "Yelich-O'Connor",
     },
   },
+  {
+    name: "[John Doe]",
+    result: {
+      firstName: "John",
+      initials: "J.",
+      lastName: "Doe",
+    },
+  },
+  {
+    name: "[Jason Rodriguez Sr.]",
+    result: {
+      firstName: "Jason",
+      initials: "J.",
+      lastName: "Rodriguez",
+      suffix: "Sr",
+    },
+  },
 ])("Check Name: %s", ({ name, result }) => {
   expect(NameParser.parse(name)).toEqual(result);
 });
