@@ -33,7 +33,7 @@ export const NameParser = (function () {
           !(
             namePart.includes("(") ||
             namePart.includes(")") ||
-            namePart.includes("The")
+            namePart === "The"
           )
       );
 
