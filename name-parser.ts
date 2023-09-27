@@ -28,19 +28,11 @@ export const NameParser = (function () {
     let nameParts = fullastName
       .replace(/\s+/g, " ")
       .split(" ")
-      .filter(
-        (namePart) =>
-          !(
-            namePart.includes("(") ||
-            namePart.includes(")") ||
-            namePart === "The"
-          )
-      );
+      .filter((namePart) => !(namePart.includes("(") || namePart.includes(")") || namePart === "The"));
 
     const numWords = nameParts.length;
 
-    let { removedPart, salutation, updatedNameParts } =
-      this.getSalutationAndRemoveCommaName(nameParts);
+    let { removedPart, salutation, updatedNameParts } = this.getSalutationAndRemoveCommaName(nameParts);
 
     let suffix: string | undefined = "";
     // check for suffixes only if name consists more than 2 parts
@@ -80,37 +72,39 @@ export const NameParser = (function () {
     // const end = suffix ? numWords - 1 : numWords;
     const end = suffix ? numWords - suffix.split(" ").length : numWords;
 
-    word = nameParts[start];
-    // if we start off with an initial, we'll call it the first name
-    if (this.is_initial(word)) {
-      firstName += " " + word.toUpperCase();
-      initials += word.replace(".", "").toUpperCase() + ".";
-    } else {
-      firstName += " " + this.fix_case(word);
-      initials += word.toUpperCase().substring(0, 1) + ".";
-    }
-
-    // concat the first name
-    for (i = start + 1; i < end - 1; i++) {
-      word = nameParts[i];
-      // move on to parsing the last name if we find an indicator of a compound last name (Von, Van, etc)
-      // we do not check earlier to allow for rare cases where an indicator is actually the first name (like "Von Fabella")
-      if (this.is_compound_lastName(word)) {
-        if (!(this.is_initial(word) && word === word.toUpperCase())) {
-          //If it's one letter and capitalized, consider it a middle initial
-          break;
-        }
+    if (end > start) {
+      word = nameParts[start];
+      // if we start off with an initial, we'll call it the first name
+      if (this.is_initial(word)) {
+        firstName += " " + word.toUpperCase();
+        initials += word.replace(".", "").toUpperCase() + ".";
+      } else {
+        firstName += " " + this.fix_case(word);
+        initials += word.toUpperCase().substring(0, 1) + ".";
       }
 
-      if (this.is_initial(word)) {
-        initials += " " + word.replace(".", "").toUpperCase() + ".";
-        firstName += " " + word.toUpperCase();
-      } else {
-        if (firstName && i === end - 1) {
-          lastName += " " + this.fix_case(word);
+      // concat the first name
+      for (i = start + 1; i < end - 1; i++) {
+        word = nameParts[i];
+        // move on to parsing the last name if we find an indicator of a compound last name (Von, Van, etc)
+        // we do not check earlier to allow for rare cases where an indicator is actually the first name (like "Von Fabella")
+        if (this.is_compound_lastName(word)) {
+          if (!(this.is_initial(word) && word === word.toUpperCase())) {
+            //If it's one letter and capitalized, consider it a middle initial
+            break;
+          }
+        }
+
+        if (this.is_initial(word)) {
+          initials += " " + word.replace(".", "").toUpperCase() + ".";
+          firstName += " " + word.toUpperCase();
         } else {
-          firstName += " " + this.fix_case(word);
-          initials += " " + this.fix_case(word).substring(0, 1) + ".";
+          if (firstName && i === end - 1) {
+            lastName += " " + this.fix_case(word);
+          } else {
+            firstName += " " + this.fix_case(word);
+            initials += " " + this.fix_case(word).substring(0, 1) + ".";
+          }
         }
       }
     }
@@ -158,7 +152,7 @@ export const NameParser = (function () {
       }
       salutation += ` ${isSalutation}`;
     }
-    return { removedPart, salutation, updatedNameParts };
+    return { removedPart, salutation: salutation.trim(), updatedNameParts };
   };
 
   NameParser.removeIgnoredChars = function (word: string) {
@@ -329,10 +323,7 @@ export const NameParser = (function () {
         if (this.is_camel_case(thisWord)) {
           return thisWord;
         } else {
-          return (
-            thisWord.substr(0, 1).toUpperCase() +
-            thisWord.substr(1).toLowerCase()
-          );
+          return thisWord.substring(0, 1).toUpperCase() + thisWord.substring(1).toLowerCase();
         }
       })
       .join(seperator);

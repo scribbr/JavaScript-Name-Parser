@@ -594,11 +594,17 @@ test.each([
     },
   },
   {
-    name: "By Theodor Rodriguez",
+    name: "Theodor Rodriguez",
     result: {
       firstName: "Theodor",
       initials: "T.",
       lastName: "Rodriguez",
+    },
+  },
+  {
+    name: "Dr.",
+    result: {
+      salutation: "Dr.",
     },
   },
 ])("Check Name: %s", ({ name, result }) => {
